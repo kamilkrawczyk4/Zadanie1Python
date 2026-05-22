@@ -23,7 +23,12 @@ def calculate_average_grade():
     num_grades = int(get_number("> "))
     average = 0
     for i in range(num_grades):
-        average += get_number(f"Podaj ocenę {i + 1}: ")
+        while True:
+            grade = get_number(f"Podaj ocenę {i + 1} (1-6): ")
+            if 1 <= grade <= 6:
+                average += grade
+                break
+            print("Błąd: Ocena musi być w zakresie 1-6.")
     average /= num_grades
     print(f"Średnia ocen: {average}")
     if average >= 3:
