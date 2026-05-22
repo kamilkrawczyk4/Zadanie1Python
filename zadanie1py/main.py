@@ -49,7 +49,7 @@ def calculate_average_grade():
 def convert_temperature():
     unit = input("Wpisz c, jeśli chcesz zamienić stopnie Celsjusza na Fahrenheita lub f, jeśli chcesz zamienić stopnie Fahrenheita na Celsjusza: ")
     temp = get_number("Wpisz temperaturę: ")
-    result = None
+    result = 0
     if unit == "c":
         result = temp * 1.8 + 32
     elif unit == "f":
