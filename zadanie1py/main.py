@@ -1,5 +1,15 @@
 def main():
-    calculate()
+    print("Wybierz opcję:")
+    print("1. Kalkulator")
+    print("2. Konwersja temperatury")
+    print("3. Obliczanie średniej ocen")
+    choice = input("> ")
+    if choice == "1":
+        calculate()
+    elif choice == "2":
+        convert_temperature()
+    elif choice == "3":
+        calculate_average_grade()
 
 def get_number(prompt):
     while True:
@@ -7,6 +17,34 @@ def get_number(prompt):
             return float(input(prompt))
         except ValueError:
             print("Błąd: Podaj poprawną liczbę.")
+
+def calculate_average_grade():
+    print("Podaj, ile ocen chcesz wprowadzić: ")
+    num_grades = int(get_number("> "))
+    average = 0
+    for i in range(num_grades):
+        average += get_number(f"Podaj ocenę {i + 1}: ")
+    average /= num_grades
+    print(f"Średnia ocen: {average}")
+    if average >= 3:
+        print("Uczeń zdał")
+    else:
+        print("Uczeń nie zdał")
+        
+
+def convert_temperature():
+    temp = get_number("Wpisz temperaturę: ")
+    unit = input("Wpisz c, jeśli chcesz zamienić stopnie Celsjusza na Fahrenheita lub f, jeśli chcesz zamienić stopnie Fahrenheita na Celsjusza: ")
+    result = None
+    if unit == "c":
+        result = temp * 1.8 + 32
+    elif unit == "f":
+        result = (temp - 32) / 1.8
+    else:
+        print("Nieprawidłowy wybór jednostki. Użyj 'c' lub 'f'.")
+        return
+    print(f"Wynik: {result}")
+        
 
 def calculate():
     a = get_number("Wpisz pierwszą liczbę: ")
