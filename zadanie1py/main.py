@@ -19,8 +19,14 @@ def get_number(prompt):
             print("Błąd: Podaj poprawną liczbę.")
 
 def calculate_average_grade():
-    print("Podaj, ile ocen chcesz wprowadzić: ")
-    num_grades = int(get_number("> "))
+    while True:
+        try:
+            num_grades = int(input("Podaj, ile ocen chcesz wprowadzić: "))
+            if num_grades > 0:
+                break
+            print("Błąd: Podaj liczbę większą od zera.")
+        except ValueError:
+            print("Błąd: Podaj liczbę całkowitą.")
     average = 0
     for i in range(num_grades):
         while True:
